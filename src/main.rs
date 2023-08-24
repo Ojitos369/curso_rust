@@ -1,57 +1,43 @@
-fn pildoras() {
-    println!("Que pildora quieres tomar (roja, azul)? ");
-    let mut pildora: String = String::new();
+// https://github.com/Ojitos369/curso_rust
 
-    std::io::stdin().read_line(&mut pildora).unwrap();
-    pildora = pildora.trim().to_string();
-
-    if pildora == "roja" {
-        println!("Bienvenido a la matrix");
-    } else if pildora == "azul" {
-        println!("Has despertado en tu cama sin saber nada, como un dia normal");
-    } else {
-        println!("Ups... has quedado glitcheado por toda la eternidad..... .... ... .. .");
-    }
-
+fn reto() {
+    println!("En esta clase no hubo reto :'c");
 }
 
-fn condicionales() {
-    println!("Ingresa tu edad: ");
-    let mut edad_str: String = String::new();
+fn clase() {
+    // Si no se pone el tipo de dato Rust le asigna automaticamente dependiendo del contexto
+    // Es buena practica asignar el tipo pero si es obvio no es necesario
+    let numero_1 = 123; 
+    let numero_2 = 321;
+    let suma = numero_1 + numero_2;
 
-    std::io::stdin().read_line(&mut edad_str).unwrap();
-
-    let edad: u8 = edad_str.trim().parse().unwrap();
-
-    if edad < 12 {
-        println!("Eres un niño");
-    } else if edad < 18 {
-        println!("Eres un adolescente");
-    } else {
-        println!("Eres un adulto");
-        if edad > 65 {
-            println!("Eres un adulto mayor");
-        } else if edad == 27 {
-            println!("Tienes mi edad, bienvenido");
+    loop {
+        let mut respuesta_str = String::new();
+        println!("Cuanto es la suma de {} + {}?", numero_1, numero_2);
+        std::io::stdin().read_line(&mut respuesta_str).unwrap();
+        let respuesta: i16 = respuesta_str.trim().parse().unwrap();
+        if respuesta == suma {
+            println!("La respuesta es correta");
+            break;
         } else {
-            println!("Bienvenido");
+            println!("La respuesta es incorrecta. Intenta nuevamente.");
         }
     }
+
 }
 
 fn main() {
-    println!("Clase: 1 \nReto: 2");
+    println!("1: Clase \n2: Reto\nQue quieres ejecutar?");
     let mut opcion: String = String::new();
     std::io::stdin().read_line(&mut opcion).unwrap();
 
     opcion = opcion.trim().to_string();
 
     if opcion == "1" {
-        condicionales();
+        clase();
     } else if opcion == "2" {
-        pildoras();
+        reto();
     } else {
         println!("Opcion no valida");
     }
-
 }
